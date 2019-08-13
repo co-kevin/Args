@@ -1,0 +1,23 @@
+{
+  "name": "Args",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Hooks Zhang",
+  "license": "MIT",
+  "scripts": {
+    "start": "babel-node src/index.js",
+    "test": "mocha --require @babel/register"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    "mocha": "^6.2.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  }
+}
