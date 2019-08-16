@@ -12,17 +12,35 @@ export default class Args {
       case 'boolean':
         return this._boolanValue(argSpec.name)
       case 'number':
-        break;
+        return this._numberValue(argSpec.name)
       case 'string':
-          break;
+        return this._stringValue(argSpec.name)
       default:
         throw new Error('Unexpected arg type: ' + argSpec.type)
     }
   }
 
   _boolanValue (name) {
-    const index = this.argsArray.findIndex(arg => arg === ('-' + name))
+    const index = this._findArgIndex(name)
     return index !== -1
+  }
+
+  _numberValue (name) {
+    const index = this._findArgIndex(name)
+    // default value
+    if (index === -1) return 0
+    return Number(this.argsArray[index + 1])
+  }
+
+  _stringValue (name) {
+    const index = this._findArgIndex(name)
+    // default value
+    if (index === -1) return ''
+    return this.argsArray[index + 1]
+  }
+
+  _findArgIndex (name) {
+    return this.argsArray.findIndex(arg => arg === ('-' + name))
   }
 
   _hasArg (name) {
